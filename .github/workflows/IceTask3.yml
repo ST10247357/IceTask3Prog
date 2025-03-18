@@ -1,32 +1,32 @@
 name : Ice TAsk 3
 
-on : 
- push :
-branches : ["master"] 
-pull request : 
-branches : ["master"]
+on: 
+ push:
+   branches: ["master"] 
+ pull request: 
+   branches: ["master"]
 
-jobs : 
-builds :
-runs on : ubuntu-latest 
+jobs: 
+   builds:
+     runs on: ubuntu-latest 
 
 steps:
 # checkout Respository
--name : Checkout Code
+- name: Checkout Code
   uses: actions/checkout@v4
 
 # Set up .Net SDK
-- name : Set Up .NET SDK
+- name: Set Up .NET SDK
   uses: actions/setup-dotnet@v4
-with: 
-dotnet-version: '8.0'
+  with: 
+   dotnet-version: '8.0'
 
 # Restore any Dependencies
 - name: Dependencies
   run: dotnet restore
 
 # Run the unit test 
-- name : Unit Test
+- name: Unit Test
   run: dotnet test
 
 #Build the project
